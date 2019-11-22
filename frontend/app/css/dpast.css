@@ -1,0 +1,9 @@
+.dpast__content_defined{
+    text-decoration: underline;
+    font-weight: bold;
+    color: #003EFF
+}
+.dpast__content_defined:hover{
+    background: #ffec82;
+    cursor: pointer
+}

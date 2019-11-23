@@ -1,40 +1,45 @@
 
-$(".dpast__content_defined").click(function() {
-    $('.dpast__description').text('')
-    content = $(this).html()
-    info = find(content)
-    $('.dpast__description').text(info)
 
-    $('.dpast__description').show()
-})
-
-$('dpast__description__hide').click(function () {
-    $('.dpast__description').hide()
-})
 
 
 function find(content) {
 
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", "http://127.0.0.1:5000/find?word=" + content, false)
+    $.get("http://127.0.0.1:5000/find?word=" + content,
 
-    xmlHttp.send();
+        function(data) {
+            $('#dpast__description').text(data)
 
-    return xmlHttp.responseText
+            $('#dpast__description').show()
+        }
+    )
 
 }
 
 function sendHtml() {
-    var poems = $('.dpast').html()
-    alert(poems)
-    for (i = 0; i < poems.lenght; i++){
-        alert(i)
+
+
+    var xmlHttp = new XMLHttpRequest();
+
+    my_url = window.location.href.replace()
+
+    xmlHttp.open("GET", "http://127.0.0.1:5000/parse?url=" + my_url, false)
+
+    xmlHttp.send();
+
+    var words = JSON.parse(xmlHttp.response)['words']
+
+    for (i in words) {
+        document.body.innerHTML = document.body.innerHTML.replace(words[i], '<span class="dpast__content__defined">' + words[i] + '</span>');
     }
-    // var xmlHttp = new XMLHttpRequest();
-    // xmlHttp.open("GET", "http://127.0.0.1:5000/find?word=" + content, false)
-    //
-    // xmlHttp.send();
-    //
-    // return xmlHttp.responseText
 
 }
+$(document).ready(function() {
+    $(".dpast__content__defined").click(function() {
+        content = $(this).html()
+        info = find(content)
+    })
+
+    $('.dpast__description__hide').click(function() {
+        $('#dpast__description').hide()
+    })
+});

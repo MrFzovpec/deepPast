@@ -7,3 +7,17 @@
     background: #ffec82;
     cursor: pointer
 }
+
+.dpast__description{
+    padding: 3%;
+    border-bottom: 3px solid black;
+    display: none;
+}
+.dpast__description h2{
+    color: #0037FF
+}
+
+.dpast__description__hide{
+    text-decoration: underline;
+    color: #0037FF
+}

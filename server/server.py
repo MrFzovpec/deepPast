@@ -1,17 +1,19 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
+from parser import Parser
+
+parser = Parser()
 
 app = Flask(__name__)
 
 cors = CORS(app)
 
-@app.route('/')
+@app.route('/find')
 @cross_origin()
-def main():
+def find():
     word = request.args['word']
-    print(word)
 
-    return word
+    return parser.find(word)
 
 
 

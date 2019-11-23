@@ -22,6 +22,13 @@ def parse_site():
 
     return parser.parse_current_page(url)
 
+@app.route('/parse_chrome')
+@cross_origin()
+def parse_site_chrome():
+    url = request.args['url']
+    print(url)
+    return parser.parse_current_page_chrome(url)
+
 
 
 

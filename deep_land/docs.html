@@ -1,387 +1,191 @@
 <!DOCTYPE html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta name="description" content="jQuery-Mask-Plugin - A jQuery plugin to make field masks" />
     <meta name="author" content="Igor Escobar" />
-    <title>DeepPaste</title>
-
+    <title>DeepPast.js - Документация</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Chivo:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700" rel="stylesheet">
-
-
+    <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://yandex.st/highlightjs/7.3/styles/default.min.css">
 
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="donate">
-      <div class="container">
-        <h3 class="ksv">Поддержка проекта</h3>
+        <div class="container">
+            <h3 class="ksv">Поддержка проекта</h3>
 
-        <ul>
-          <li><a href="" class="link-small paypal-amount" data-amount="5">50 руб</a></li>
-          <li><a href="" class="link-small paypal-amount" data-amount="10">100 руб</a></li>
-          <li><a href="" class="link-small paypal-amount" data-amount="20">500 руб</a></li>
-          <li><a href="" class="link-small paypal-amount" data-amount="50">1000 руб</a></li>
-          <li><h3>Донатик</h3></li>
-        </ul>
+            <ul>
+                <li><a href="" class="link-small paypal-amount" data-amount="5">50 руб</a></li>
+                <li><a href="" class="link-small paypal-amount" data-amount="10">100 руб</a></li>
+                <li><a href="" class="link-small paypal-amount" data-amount="20">500 руб</a></li>
+                <li><a href="" class="link-small paypal-amount" data-amount="50">1000 руб</a></li>
+                <li>
+                    <h3>Донатик</h3>
+                </li>
+            </ul>
 
-        <i class="hidden">Close</i>
-      </div>
+            <i class="hidden">Close</i>
+        </div>
     </div>
 
     <div class="hero hero-docs">
-      <div class="container">
-        <div class="navigation">
-          <nav>
-            <a href="index.html" ><h2>Главнвя</h2></a>
-            <a href="docs.html" class="selected"><h2>Документация</h2></a>
-            <a href="https://github.com/MrFzovpec/deepPast" target="black"><h2>Github</h2></a>
-
-          </nav>
-
+        <div class="container">
+            <img class="logo2" src="img/logo3.jpg" alt="">
+            <div class="navigation">
+                <nav>
+                    <a href="index.html">Главная</a>
+                    <a href="docs.html" class="selected">Документация</a>
+                    <a href="https://github.com/MrFzovpec/deepPast" target="black">Github</a>
+                </nav>
+            </div>
         </div>
-
-        <div class="hero-column-content">
-          <div class="title">
-            <h1>Документация</h1>
-            <h3>Узнай что нибудь новенькое о нашем SDK</h3>
-          </div>
-
-          <a href="https://github.com/MrFzovpec/deepPast" class="button-large">Скачать</a>
-        </div>
-      </div>
     </div>
 
     <section class="docs">
-      <div class="container container-narrow">
-        <div class="nav-container">
-          <nav class="code-nav docs-nav">
-            <ol>
-              <li><p class="section-divider">Documentation</p></li>
-              <li><a href="docs.html#basic-usage">Basic usage</a></li>
-              <li><a href="docs.html#callback-examples">Callback examples</a></li>
-              <li><a href="docs.html#on-the-fly-mask-changes">On-the-fly mask change</a></li>
-              <li><a href="docs.html#mask-as-a-function">Mask as a function</a></li>
-              <li><a href="docs.html#using-html-notation-examples">Using HTML notation examples</a></li>
-              <li><a href="docs.html#translation">Translation</a></li>
-              <li><a href="docs.html#removing-the-mask">Removing the mask</a></li>
-              <li><a href="docs.html#getting-the-unmasked-typed-value">Getting the unmasked typed value</a></li>
-              <li><a href="docs.html#getting-a-masked-value-programmatically">Getting a masked value programmatically</a></li>
-              <li><p class="section-divider">Customization</p></li>
-              <li><a href="docs.html#field-options">Field options</a></li>
-              <li><a href="docs.html#public-methods">Public methods</a></li>
-              <li><a href="docs.html#global-options">Global options</a></li>
-            </ol>
-          </nav>
+        <div class="container container-narrow">
+            <div class="nav-container">
+                <nav class="code-nav docs-nav col-md-3 col-xs-12">
+                    <ol>
+                        <li>
+                            <p class="section-divider">SDK</p>
+                        </li>
+                        <li><a href="docs.html#basic-usage">Старт</a></li>
+                        <li><a href="docs.html#callback-examples">Оформление текста для обработки</a></li>
+                        <li><a href="docs.html#on-the-fly-mask-changes">Окно для вывода информации о слове/речевом обороте/словосочетании</a></li>
+                        <li><a href="docs.html#mask-as-a-function">Вызываем функцию парсинга контента</a></li>
+                        <li>
+                            <p class="section-divider">Расширение</p>
+                        </li>
+                        <li><a href="docs.html#field-options">Установка расширения</a></li>
+
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="docs-content">
+
+                <div class="doc-point">
+                    <h2>SDK</h2>
+                    <h3 id="basic-usage">Старт</h3>
+                    <p class="doc-description">Перед началом работы нужно импортировать скрипты и стили:</p><br>
+
+                    <xmp>
+
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <!-- Импортируем jQuery -->
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+                <!-- Импортируем стили deepPast -->
+                <link rel="stylesheet" href="...path-to-dpast-folder/dpast/css/dpast.css">
+                <!-- Импортируем скрипты deepPast -->
+                <script type="text/javascript" src="...path-to-dpast-folder/dpast/js/dpast.js"></script>
+                <!-- Импорт Ваших стилей -->
+                <link rel="stylesheet" href="css/main.css">
+
+                <title>Document</title>
+            </head>
+                    </xmp>
+                </div>
+
+                <div class="doc-point">
+                    <h3 id="callback-examples">Оформление текста для обработки</h3>
+                    <p class="doc-description">Для выделения зоны с текстом используется родительский класс <mark class="type_class">dpast</mark>, для выделения параграфа с текстом нужно использовать класс <mark
+                            class="type_class">dpast__content</mark></p>
+                    <xmp>
+            <div class="dpast">
+                <p class="dpast__content">
+                    Унылая пора! Очей очарованье! <br>
+                    Приятна мне твоя прощальная краса — <br>
+                    Люблю я пышное природы увяданье,<br>
+                    В голубь и в золото одетые леса,<br>
+                    В их сенях ветра шум и свежее дыханье,<br>
+                    И мглой волнистою покрыты небеса,<br>
+                    И редкий солнца луч, и первые морозы,<br>
+                    И герой седой зимы угрозы.<br><br>
+                    А.С. Пушкин
+                </p>
+
+            </div>
+                    </xmp>
+
+
+                </div>
+
+                <div class="doc-point">
+                    <h3 id="on-the-fly-mask-changes">Окно для вывода информации о слове/речевом обороте/словосочетании</h3>
+                    <p class="doc-description">Для добавлении окна, создайте блок с id <mark class="type_id">dpast__description</mark>. В этот блок добавьте следущие элементы<br>
+                        1) Изображение или блок с id <mark class="type_id">close__dpast__description</mark><br>
+                        2) <mark class="type_tag">span</mark> с id <mark class="type_id">dpast__description__title</mark><br>
+                        3) Пустой параграф <mark class="type_tag">p</mark> с id <mark class="type_id">dpast__description__content</mark></p>
+                    <xmp>
+            <div id="dpast__description">
+                <img id="close__dpast__description" src="https://img.icons8.com/ios/40/000000/close-window.png">
+                <span id="dpast__description__title"></span>
+                <br><br>
+                <p id="dpast__description__content"></p>
+            </div>
+                    </xmp>
+                </div>
+
+                <div class="doc-point">
+                    <h3 id="mask-as-a-function">Вызываем функцию парсинга контента</h3>
+                    <p class="doc-description">В конце добавляем <mark class="type_tag">script</mark> для вызова функции парсинга текста/ов</p><br>
+
+                    <xmp>
+            <script type="text/javascript" onload="">sendHtml()</script>
+                    </xmp>
+                </div>
+
+            </div>
         </div>
-
-        <div class="docs-content">
-          <h2 id="documentation">Документация</h2>
-
-          <div class="doc-point">
-            <h3 id="basic-usage">Basic Usage</h3>
-
-<pre><code class="javascript">$(document).ready(function(){
-  $('.date').mask('00/00/0000');
-  $('.time').mask('00:00:00');
-  $('.date_time').mask('00/00/0000 00:00:00');
-  $('.cep').mask('00000-000');
-  $('.phone').mask('0000-0000');
-  $('.phone_with_ddd').mask('(00) 0000-0000');
-  $('.phone_us').mask('(000) 000-0000');
-  $('.mixed').mask('AAA 000-S0S');
-  $('.cpf').mask('000.000.000-00', {reverse: true});
-  $('.cnpj').mask('00.000.000/0000-00', {reverse: true});
-  $('.money').mask('000.000.000.000.000,00', {reverse: true});
-  $('.money2').mask("#.##0,00", {reverse: true});
-  $('.ip_address').mask('0ZZ.0ZZ.0ZZ.0ZZ', {
-    translation: {
-      'Z': {
-        pattern: /[0-9]/, optional: true
-      }
-    }
-  });
-  $('.ip_address').mask('099.099.099.099');
-  $('.percent').mask('##0,00%', {reverse: true});
-  $('.clear-if-not-match').mask("00/00/0000", {clearIfNotMatch: true});
-  $('.placeholder').mask("00/00/0000", {placeholder: "__/__/____"});
-  $('.fallback').mask("00r00r0000", {
-      translation: {
-        'r': {
-          pattern: /[\/]/,
-          fallback: '/'
-        },
-        placeholder: "__/__/____"
-      }
-    });
-  $('.selectonfocus').mask("00/00/0000", {selectOnFocus: true});
-});</code></pre>
-          </div>
-
-          <div class="doc-point">
-            <h3 id="callback-examples">Callback examples</h3>
-
-<pre><code class="javascript">var options =  {
-  onComplete: function(cep) {
-    alert('CEP Completed!:' + cep);
-  },
-  onKeyPress: function(cep, event, currentField, options){
-    console.log('A key was pressed!:', cep, ' event: ', event,
-                'currentField: ', currentField, ' options: ', options);
-  },
-  onChange: function(cep){
-    console.log('cep changed! ', cep);
-  },
-  onInvalid: function(val, e, f, invalid, options){
-    var error = invalid[0];
-    console.log ("Digit: ", error.v, " is invalid for the position: ", error.p, ". We expect something like: ", error.e);
-  }
-};
-
-$('.cep_with_callback').mask('00000-000', options);</code></pre>
-          </div>
-
-          <div class="doc-point">
-            <h3 id="on-the-fly-mask-changes">On-the-fly mask change</h3>
-
-            <pre><code class="javascript">var options =  {
-  onKeyPress: function(cep, e, field, options) {
-    var masks = ['00000-000', '0-00-00-00'];
-    var mask = (cep.length>7) ? masks[1] : masks[0];
-    $('.crazy_cep').mask(mask, options);
-}};
-
-$('.crazy_cep').mask('00000-000', options);</code></pre>
-          </div>
-
-          <div class="doc-point">
-            <h3 id="mask-as-a-function">Mask as a function</h3>
-
-            <pre><code class="javascript">var SPMaskBehavior = function (val) {
-  return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
-},
-spOptions = {
-  onKeyPress: function(val, e, field, options) {
-      field.mask(SPMaskBehavior.apply({}, arguments), options);
-    }
-};
-
-$('.sp_celphones').mask(SPMaskBehavior, spOptions);</code></pre>
-          </div>
-
-          <div class="doc-point">
-            <h3 id="using-html-notation-examples">Using HTML notation examples</h3>
-
-            <div>
-              <p>To get your mask applied with the data-mask attribute just use it as the same way you use with the $.mask function.</p>
-              <pre><code class="javascript"><span><</span>input type="text" name="field-name" data-mask="00/00/0000" /></code></pre>
-            </div>
-
-            <div>
-              <p>Activating a reversible mask</p>
-              <pre><code class="javascript"><span><</span>input type="text" name="field-name" data-mask="00/00/0000" data-mask-reverse="true" /></code></pre>
-            </div>
-
-            <div>
-              <p>Using clearIfNotMatch option</p>
-              <pre><code class="javascript"><span><</span>input type="text" name="field-name" data-mask="00/00/0000" data-mask-clearifnotmatch="true" /></code></pre>
-            </div>
-
-            <div>
-              <p>Using selectOnFocus option</p>
-              <pre><code class="javascript"><span><</span>input type="text" name="field-name" data-mask="00/00/0000" data-mask-selectonfocus="true" /></code></pre>
-            </div>
-          </div>
-
-          <div class="doc-point">
-            <h3 id="translation">Translation</h3>
-
-            <div>
-              <p>Teach to jQuery Mask Plugin how to apply your mask:</p>
-              <pre><code class="javascript">// now the digit 0 on your mask pattern will be interpreted
-// as valid characters like 0,1,2,3,4,5,6,7,8,9 and *
-$('.your-field').mask('00/00/0000', {'translation': {0: {pattern: /[0-9*]/}}});</code></pre>
-            </div>
-
-            <div>
-              <p>By default, jQuery Mask Plugin only reconizes the logical digit A (Numbers and Letters) and S (A-Za-z) but you can extend or modify this behaviour by telling to jQuery Mask Plugin how to interpret those logical digits.</p>
-<pre><code class="javascript">$('.your-field').mask('AA/SS/YYYY', {'translation': {
-    A: {pattern: /[A-Za-z0-9]/},
-    S: {pattern: /[A-Za-z]/},
-    Y: {pattern: /[0-9]/}
-  }
-});</code></pre>
-
-              <p>Now jQuery Mask Plugin knows the logic digit Y and you can create your own pattern. </p>
-            </div>
-
-            <div>
-              <h4>Optional digits</h4>
-
-              <p>You can also tell to jQuery Mask which digit is optional, to create a IP mask for example: </p>
-
-              <pre><code class="javascript">// way 1
-$('.ip_address').mask('099.099.099.099');
-// way 2
-$('.ip_address').mask('0ZZ.0ZZ.0ZZ.0ZZ', {translation:  {'Z': {pattern: /[0-9]/, optional: true}}});</code></pre>
-
-              <p>Now, all Z digits in your masks is optional. </p>
-            </div>
-
-            <div>
-              <h4>Recursive digits</h4>
-              <p>With jQuery Mask Plugin you can also define recursive patterns inside your mask:</p>
-
-              <pre><code class="javascript">$('.money_example').mask('#.##0,00', {reverse: true});</code></pre>
-
-              <p>With example above the mask will be placed from the right to the left (that's why reverse:true is defined). As soon as you start typing, a "0,00" will be applied followed by repeating recursively the following pattern "#.##". The result could be something like: 1.234.567,890.</p>
-            </div>
-
-            <div>
-              <p>You can also use that kind of feature to define what kind of data could be typed inside of a field:</p>
-              <pre><code class="javascript">$('.example').mask('0#');</code></pre>
-              <p>Now only numbers will be allowed inside your form field.</p>
-            </div>
-
-            <div>
-              <h4>Fallback digits</h4>
-              <p>When a user types a invalid char for the current position the plugin will replace it by its fallback instead of erasing them.</p>
-
-              <pre><code class="javascript">$('.money_example').mask('#.##0,00', { reverse: true });</code></pre>
-            </div>
-          </div>
-
-          <div class="doc-point">
-            <h3 id="removing-the-mask">Removing the mask</h3>
-            <pre><code class="javascript">$('.date').unmask();</code></pre>
-          </div>
-
-          <div class="doc-point">
-            <h3 id="getting-the-unmasked-typed-value">Getting the unmasked typed value</h3>
-            <pre><code class="javascript">$('.date').cleanVal();</code></pre>
-          </div>
-
-          <div class="doc-point">
-            <h3 id="getting-a-masked-value-programmatically">Getting a masked value programmatically</h3>
-            <pre><code class="javascript">$('.date').masked('19840807');</code></pre>
-          </div>
-        </div>
-      </div>
     </section>
 
     <section class="docs">
-      <div class="container container-narrow">
-        <nav class="code-nav docs-nav">
-        </nav>
+        <div class="container container-narrow">
+            <nav class="code-nav docs-nav ">
+            </nav>
 
-        <div class="docs-content">
-          <h2>Customization</h2>
+            <div class="docs-content">
+                <h2>Расширение</h2>
 
-          <div class="doc-point">
-            <h3 id="field-options">Field options</h3>
+                <div class="doc-point">
+                    <h3 id="field-options">Как установить расширение</h3>
+                    <p class="doc-description">В первую очередь, нужно <a href="files/chrome_extension.zip" download>скачать</a> и распаковать архив с расширением. После нужно открыть браузер Google Chrome и перейти на <a target="black" href="chrome://extensions/"><mark class="type_id">chrome://extensions/</mark></a>, включить <mark class="type_tag">режим разработчика</mark> и загрузить папку с расширением с помощью кнопки <mark class="type_class">"Загрузить распакованное расширение"</mark>. (См. видео ниже)</p><br>
+                    <video width="100%" src="video/install.mov" autoplay controls poster="img/logo3.jpg"></video>
+                </div>
+            </div>
 
-<pre><code class="javascript">var custom_options = {
-  byPassKeys: [8, 9, 37, 38, 39, 40],
-  translation: {
-    '0': {pattern: /\d/},
-    '9': {pattern: /\d/, optional: true},
-    '#': {pattern: /\d/, recursive: true},
-    'A': {pattern: /[a-zA-Z0-9]/},
-    'S': {pattern: /[a-zA-Z]/}
-  };
-};</code></pre>
-
-          <p><strong>byPassKeys</strong> list of keyboard's keyCode that you want to be ignored when it was pressed.<br><strong>translation</strong> object with all digits that should be interpreted as a special chars and its regex representation.</p>
-          </div>
-
-          <div class="doc-point">
-            <h3 id="public-methods">Public methods</h3>
-
-<pre><code class="javascript">/**
-Applies the mask to the matching selector elements.
-
-@selector elements to be masked.
-@mask should be a string or a function.
-@options should be an object.
-**/
-$(selector).mask(mask [, options]);
-
-/**
-Seek and destroy.
-
-@selector elements to be masked.
-**/
-$(selector).unmask();
-
-/**
-Gets the value of the field without the mask.
-
-@selector elements to be masked.
-**/
-$(selector).cleanVal();
-
-/**
-Applies the mask to the matching selector elements.
-
-@selector optional: elements to be masked. The default behaviour it's to lookup for all elements with data-mask attribute.
-**/
-$.applyDataMask([selector]);</code></pre>
-          </div>
-
-          <div class="doc-point">
-            <h3 id="global-options">Global options</h3>
-
-<pre><code class="javascript">/**
-nonInput: elements we consider nonInput
-dataMask: we mask data-mask elements by default
-watchInputs: watch for dynamically added inputs by default
-watchDataMask: by default we disabled the watcher for dynamically
-added data-mask elements by default (performance reasons)
-**/
-
-$.jMaskGlobals = {
-  maskElements: 'input,td,span,div',
-  dataMaskAttr: '*[data-mask]',
-  dataMask: true,
-  watchInterval: 300,
-  watchInputs: true,
-  watchDataMask: false,
-  byPassKeys: [9, 16, 17, 18, 36, 37, 38, 39, 40, 91],
-  translation: {
-    '0': {pattern: /\d/},
-    '9': {pattern: /\d/, optional: true},
-    '#': {pattern: /\d/, recursive: true},
-    'A': {pattern: /[a-zA-Z0-9]/},
-    'S': {pattern: /[a-zA-Z]/}
-  }
-};</code></pre>
-          </div>
         </div>
-      </div>
     </section>
 
     <footer>
-      <div class="container">
-        <img src="img/logo3.jpg" alt="">
-        <h3>Созданно командой GeekOn Team</h3>
+        <div class="container">
+            <img src="img/logo3.jpg" alt="">
+            <h3>Созданно командой GeekOn Team</h3>
 
-        <ol>
-          <li><a href="https://vk.com/gppetr" target="_blank">VK</a></li>
-          <li><a href="https://github.com/MrFzovpec/deepPast" target="_blank">Github</a></li>
+            <ol>
+                <li><a href="https://vk.com/gppetr" target="_blank">VK</a></li>
+                <li><a href="https://github.com/MrFzovpec/deepPast" target="_blank">Github</a></li>
 
-        </ol>
-      </div>
+            </ol>
+        </div>
     </footer>
-  </body>
+</body>
 
-  <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/donation.js"></script>
-  <script type="text/javascript">
+<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/donation.js"></script>
+<script type="text/javascript">
     hljs.initHighlightingOnLoad();
-  </script>
+</script>
+
 </html>

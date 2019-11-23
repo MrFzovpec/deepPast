@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
-	"name": "Tproger Launcher",
-	"description": "Запускатор представительств Tproger",
+	"name": "DeepPast extension",
+	"description": "Анализ страницы на наличие устаревших слов",
 	"version": "1.0.0",
 	"icons": {"128": "icon.png"},
 	"browser_action": {

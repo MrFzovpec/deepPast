@@ -55,6 +55,8 @@ class Parser:
         soup = bs(request.text, 'html.parser')
         poems = soup.find_all(attrs={"class": 'dpast__content'})
 
+
+
         dialects = {
             'words': []
         }
@@ -64,4 +66,23 @@ class Parser:
 
             dialects['words'].append(poem[randint(0, len(poem))])
 
+        return json.dumps(dialects)
+
+    def parse_current_page_chrome(self, url):
+        request = self.session.get(url, headers=self.headers)
+        soup = bs(request.text, 'html.parser')
+        [s.extract() for s in soup('script')]
+        all_words = set(soup.text.replace('\n', ' ').split())
+
+        dialects = {
+            'words': []
+        }
+        processed_words = []
+        for word in all_words:
+            variants = self.morph.parse(word.replace(',', '').replace('.', '').replace('!', ''))
+            processed_words.append(variants[0].normal_form)
+        for i in range(5):
+            dialects['words'].append(processed_words[randint(0, len(processed_words))])
+
+        print("Send!")
         return json.dumps(dialects)

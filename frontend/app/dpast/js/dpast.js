@@ -9,10 +9,11 @@ function find(content) {
             $('#dpast__description__title').text(title)
             $('#dpast__description__content').text(text)
 
-            $('#chrome_dpast__description__title').text(title)
+
             $('#chrome_dpast__description__content').text(text)
 
             $('#dpast__description').show()
+            $('#chrome_dpast__description__content').show()
         }
     )
 
@@ -36,15 +37,25 @@ function sendHtml(mode, url) {
             document.body.innerHTML = document.body.innerHTML.replace(words[i], '<span class="dpast__content__defined">' + words[i] + '</span>');
         }
     } else {
+        $('#chrome_analyze__process').toggle()
         $('#chrome_analyze').toggle()
 
-        $('#chrome_analyze__process').toggle()
+
         xmlHttp.open("GET", "http://127.0.0.1:5000/parse_chrome?url=" + url, false)
         xmlHttp.send();
         $('#chrome_analyze__process').toggle()
-        alert(url)
 
-        $('#chrome_words').toggle()
+        var words = JSON.parse(xmlHttp.response)['words']
+        for (i in words) {
+
+            $('#chrome_words').append('<span class="chrome_dpast__content__defined">' + words[i] + '</span></br>');
+
+
+        }
+        $('#chrome_words').append('<p id="chrome_dpast__description__content"></p>')
+
+        $('#chrome_words').show()
+        $('#chrome_dpast__description__content').show()
     }
 
 
@@ -71,7 +82,8 @@ $(document).ready(function() {
 
     //chrome script
 
-    $(".chrome__dpast__content__defined").click(function() {
+    $(".chrome_dpast__content__defined").click(function() {
+        alert(10)
         content = $(this).html()
         info = find(content)
     })
@@ -84,8 +96,8 @@ $(document).ready(function() {
             'active': true,
             'lastFocusedWindow': true
         }, function(tabs) {
-            url = tabs[0].url;
-            sendHtml("chrome", url)
+            urla = tabs[0].url;
+            sendHtml("chrome", urla)
 
         });
 

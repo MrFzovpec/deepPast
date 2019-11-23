@@ -9,10 +9,11 @@ function find(content) {
             $('#dpast__description__title').text(title)
             $('#dpast__description__content').text(text)
 
-            $('#chrome_dpast__description__title').text(title)
+
             $('#chrome_dpast__description__content').text(text)
 
             $('#dpast__description').show()
+            $('#chrome_dpast__description__content').show()
         }
     )
 
@@ -45,21 +46,21 @@ function sendHtml(mode, url) {
         $('#chrome_analyze__process').toggle()
 
         var words = JSON.parse(xmlHttp.response)['words']
-
-        alert(words)
-
         for (i in words) {
 
-            document.body.innerHTML = document.body.innerHTML.replace(words[i], '<span class="dpast__content__defined">' + words[i] + '</span>');
+            $('#chrome_words').append('<span class="chrome_dpast__content__defined">' + words[i] + '</span></br>');
+
+
         }
+        $('#chrome_words').append('<p id="chrome_dpast__description__content"></p>')
 
-        $('#chrome_words').toggle()
+        $('#chrome_words').show()
+        $('#chrome_dpast__description__content').show()
+        $(".chrome_dpast__content__defined").click(function() {
+            content = $(this).html()
+            info = find(content)
+        })
     }
-
-
-
-
-
 
 }
 
@@ -80,13 +81,9 @@ $(document).ready(function() {
 
     //chrome script
 
-    $(".chrome__dpast__content__defined").click(function() {
-        content = $(this).html()
-        info = find(content)
-    })
 
     $('#chrome__close__dpast__description').click(function() {
-        $('#chrome__dpast__description').hide()
+        $('#chrome_dpast__description').hide()
     })
     $('#chrome_analyze').click(function() {
         chrome.tabs.query({

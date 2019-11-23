@@ -1,9 +1,23 @@
 .dpast__content__defined{
     text-decoration: underline;
     font-weight: bold;
-    color: #003EFF
+    color: #003EFF;
+    text-transform: capitalize;
 }
+
 .dpast__content__defined:hover{
+    background: #ffec82;
+    cursor: pointer
+}
+
+.chrome_dpast__content__defined{
+    text-decoration: underline;
+    font-weight: bold;
+    color: #003EFF;
+    text-transform: capitalize;
+}
+
+.chrome_dpast__content__defined:hover{
     background: #ffec82;
     cursor: pointer
 }

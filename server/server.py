@@ -15,6 +15,13 @@ def find():
 
     return parser.find(word)
 
+@app.route('/parse')
+@cross_origin()
+def parse_site():
+    url = request.args['url']
+
+    return parser.parse_current_page(url)
+
 
 
 

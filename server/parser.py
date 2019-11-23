@@ -26,10 +26,29 @@ class Parser:
 
         response = soup.article
 
+
+
+
         if response != None:
-            return response.text
+            title = response.text.replace('\n', ' ').split()[1].replace(',', ':')
+
+            words = response.find_all('p')
+            descr = " "
+            for word in words:
+                for element in word.text.split('\n'):
+                    descr += element
+                descr += '\n'
+            response_dict = {
+                'text': descr,
+                'title': title
+            }
+            return json.dumps(response_dict)
         else:
-            return "Информация не найденна("
+            response_dict = {
+                'text': "Информация не найденна(",
+                'title': content
+            }
+            return json.dumps(response_dict)
 
     def parse_current_page(self, url):
         request = self.session.get(url, headers=self.headers)

@@ -1,13 +1,13 @@
-
-
-
-
 function find(content) {
 
     $.get("http://127.0.0.1:5000/find?word=" + content,
 
         function(data) {
-            $('#dpast__description').text(data)
+            var text = JSON.parse(data)['text']
+                title = JSON.parse(data)['title']
+
+            $('#dpast__description__title').text(title)
+            $('#dpast__description__content').text(text)
 
             $('#dpast__description').show()
         }
@@ -39,7 +39,7 @@ $(document).ready(function() {
         info = find(content)
     })
 
-    $('.dpast__description__hide').click(function() {
+    $('#close__dpast__description').click(function() {
         $('#dpast__description').hide()
     })
 });

@@ -3,6 +3,7 @@ import requests
 from datetime import date, timedelta
 import re
 from collections import Counter
+from pymorphy2 import MorphAnalyzer
 
 
 
@@ -107,7 +108,7 @@ def polnay(d1, d2):
     return dictt, d1dict, d2dict: dictionary
     """
 
-    
+
     d1 = Counter(d1)
     d2 = Counter(d2)
     dictt = {}
@@ -125,3 +126,9 @@ def polnay(d1, d2):
             d2dict[word]=1
 
     return dictt, d1dict, d2dict
+
+def proc(text):
+    tokenizer = TweetTokenizer()
+    def preprocess(text):
+        words = tokenizer.tokenize(text)
+        return ' '.join(words).lower()

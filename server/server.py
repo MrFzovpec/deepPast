@@ -26,7 +26,7 @@ def parse_site():
 @cross_origin()
 def parse_site_chrome():
     url = request.args['url']
-    print(url)
+
     return parser.parse_current_page_chrome(url)
 
 

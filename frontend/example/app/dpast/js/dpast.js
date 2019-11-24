@@ -78,7 +78,7 @@ function sendHtml(mode, url) {
 
 
 window.onload = function() {
-
+    sendHtml(null)
     $(".dpast__content__defined").click(function() {
         content = $(this).html()
         info = find(content)
@@ -88,13 +88,4 @@ window.onload = function() {
         $('#dpast__description').toggle()
     })
 
-    chrome.tabs.query({
-        'active': true,
-        'lastFocusedWindow': true
-    }, function(tabs) {
-        urla = tabs[0].url;
-
-        sendHtml("chrome", urla)
-        $('#chrome_analyze__process').toggle()
-    })
 };

@@ -3,6 +3,11 @@ import requests
 from random import randint
 import json
 from pymorphy2 import MorphAnalyzer
+from nltk.tokenize import TweetTokenizer
+from pymorphy2 import MorphAnalyzer
+from nltk.corpus import stopwords
+import nltk
+nltk.download('stopwords')
 
 
 class Parser:
@@ -12,11 +17,12 @@ class Parser:
                         'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36'}
         self.session = requests.Session()
         self.morph = MorphAnalyzer()
+        text = open('olds.json', 'r').read()
+        self.olds = json.loads(text)
 
     def find(self, content):
 
         variants = self.morph.parse(content)
-
 
         word = variants[0].normal_form
 
@@ -32,7 +38,8 @@ class Parser:
                 'title': content
             }
 
-            response_dict['text'] = response_dict['text'].replace('\n', 'dp-trans')
+            response_dict['text'] = response_dict['text'].replace(
+                '\n', 'dp-trans')
             return json.dumps(response_dict)
         else:
             response_dict = {
@@ -42,38 +49,88 @@ class Parser:
             return json.dumps(response_dict)
 
     def parse_current_page(self, url):
+        word_dict = {}
         request = self.session.get(url, headers=self.headers)
         soup = bs(request.text, 'html.parser')
         poems = soup.find_all(attrs={"class": 'dpast__content'})
-
-
 
         dialects = {
             'words': []
         }
 
+        def superrost(words):
+            return ''.join(filter(lambda x: ord(x) in range(ord('а'), ord('я') + 1) or
+                                  ord(x) in range(ord('А'), ord('Я') + 1) or
+                                  x == ' ', list(words.replace('\\n', ' '))))
+
+        tokenizer = TweetTokenizer()
+        analyzer = MorphAnalyzer()
+
+        def preprocess(text):
+            w = text.lower().split()
+
+            filtered_words = [
+                word for word in w if word not in stopwords.words('russian')]
+
+            words = tokenizer.tokenize(' '.join(filtered_words))
+
+            for i in range(len(words)):
+                k = analyzer.parse(words[i])[0].normal_form
+                word_dict[k] = words[i]
+                words[i] = k
+            return ' '.join(words)
+
         for poem in poems:
-            poem = poem.text.replace('  ', "").replace(',', '').replace('!', '').replace('.', '').replace('\n', ' ').split()
+            poem = poem.text
+            poem = preprocess(superrost(poem)).split()
 
-            dialects['words'].append(poem[randint(0, len(poem))])
 
+            for w in poem:
+                if w in self.olds:
+                    dialects['words'].append(word_dict[w])
         return json.dumps(dialects)
 
     def parse_current_page_chrome(self, url):
         request = self.session.get(url, headers=self.headers)
         soup = bs(request.text, 'html.parser')
         [s.extract() for s in soup('script')]
-        all_words = set(soup.text.replace('\n', ' ').split())
+        text = soup.text
+
+        word_dict = {}
 
         dialects = {
             'words': []
         }
-        processed_words = []
-        for word in all_words:
-            variants = self.morph.parse(word.replace(',', '').replace('.', '').replace('!', ''))
-            processed_words.append(variants[0].normal_form)
-        for i in range(5):
-            dialects['words'].append(processed_words[randint(0, len(processed_words))])
+        def superrost(words):
+            return ''.join(filter(lambda x: ord(x) in range(ord('а'), ord('я') + 1) or
+                                  ord(x) in range(ord('А'), ord('Я') + 1) or
+                                  x == ' ', list(words.replace('\\n', ' '))))
 
-        print("Send!")
+        tokenizer = TweetTokenizer()
+        analyzer = MorphAnalyzer()
+
+        def preprocess(text):
+            w = text.lower().split()
+
+            filtered_words = [
+                word for word in w if word not in stopwords.words('russian')]
+
+            words = tokenizer.tokenize(' '.join(filtered_words))
+
+            for i in range(len(words)):
+                k = analyzer.parse(words[i])[0].normal_form
+                word_dict[k] = words[i]
+                words[i] = k
+            return ' '.join(words)
+
+
+        poem = text
+        poem = preprocess(superrost(poem)).split()
+
+
+        for w in poem:
+            if w in self.olds:
+
+                dialects['words'].append(word_dict[w])
+        dialects['words'] = list(set(dialects['words']))
         return json.dumps(dialects)

@@ -54,7 +54,6 @@ function sendHtml(mode, url) {
 
 
         }
-        $('#chrome_words').append('<p id="chrome_dpast__description__content"></p>')
 
         $('#chrome_words').show()
         $('#chrome_dpast__description__content').show()

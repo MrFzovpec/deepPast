@@ -166,8 +166,9 @@ pre {
 
 .logo2 {
     margin-top: 0px;
-    width: 950px;
-    height: 450px;
+    margin-bottom: 3vh;
+    width: 100%;
+    height: auto;
 }
 
 .ksv {
@@ -176,7 +177,7 @@ pre {
 }
 
 .navigation {
-    margin: 20px 0 10px 0;
+    margin: 20px 0 0px 0;
 }
 
 .navigation nav {

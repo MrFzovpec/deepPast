@@ -6,7 +6,7 @@
 
 import wikipedia
 wikipedia.set_lang('ru')
-word = 'барбер'
+word = 'авось'
 
 
 # In[83]:
@@ -26,15 +26,12 @@ try:
         print(wikipedia.summary(answ))
         print('---------------------------------')
 except Exception:
+
     print('В Википедии статьи по слову '+answ+' не найдено')
     print('Возможно вы имели в виду:')
     for i in range(len(wikipedia.search(word))):
         answ = wikipedia.search(word)[i]
-        print(answ)   
+        print(answ)
 
 
 # In[ ]:
-
-
-
-

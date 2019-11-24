@@ -7,7 +7,7 @@ from pymorphy2 import MorphAnalyzer
 
 class Parser:
     def __init__(self):
-        self.url = 'https://gufo.me/dict/ozhegov/'
+        self.url = 'https://ru.wiktionary.org/wiki/'
         self.headers = {'accept': '*/*',
                         'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36'}
         self.session = requests.Session()
@@ -20,29 +20,18 @@ class Parser:
 
         word = variants[0].normal_form
 
-        request = self.session.get(
-            self.url + str(word), headers=self.headers)
+        request = self.session.get(self.url + word.lower())
         soup = bs(request.text, 'html.parser')
 
-        response = soup.article
-
-
-
+        response = soup.find('ol').find('li')
 
         if response != None:
-            title = response.text.replace('\n', ' ').split()[1].replace(',', ':')
-
-            words = response.find_all('p')
-            descr = " "
-            for word in words:
-                for element in word.text.split('\n'):
-                    descr += element
-                descr += '\n'
 
             response_dict = {
-                'text': descr,
-                'title': title
+                'text': response.text,
+                'title': content
             }
+
             response_dict['text'] = response_dict['text'].replace('\n', 'dp-trans')
             return json.dumps(response_dict)
         else:

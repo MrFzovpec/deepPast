@@ -6,11 +6,13 @@ function find(content) {
             var text = JSON.parse(data)['text']
             title = JSON.parse(data)['title']
 
+
             $('#dpast__description__title').text(title)
-            $('#dpast__description__content').text(text)
+
+            $('#dpast__description__content').html(text.replace(/dp-trans/gi, '</br>'))
 
 
-            $('#chrome_dpast__description__content').text(text)
+            $('#chrome_dpast__description__content').html(text.replace(/dp-trans/gi, '</br>'))
 
             $('#dpast__description').show()
             $('#chrome_dpast__description__content').show()
@@ -60,42 +62,40 @@ function sendHtml(mode, url) {
             content = $(this).html()
             info = find(content)
         })
+
+        $('#chrome__close__dpast__description').click(function() {
+            $('#chrome__dpast__description').hide()
+        })
     }
+
+
+
+
+
 
 }
 
 
 
-$(document).ready(function() {
+window.onload = function() {
+    chrome.tabs.query({
+        'active': true,
+        'lastFocusedWindow': true
+    }, function(tabs) {
+        urla = tabs[0].url;
 
-    // SDK script
+        sendHtml("chrome", urla)
+        $('#chrome_analyze__process').toggle()
+
+    })
+
     $(".dpast__content__defined").click(function() {
         content = $(this).html()
         info = find(content)
     })
 
     $('#close__dpast__description').click(function() {
-
         $('#dpast__description').toggle()
     })
 
-    //chrome script
-
-
-    $('#chrome__close__dpast__description').click(function() {
-        $('#chrome_dpast__description').hide()
-    })
-    $('#chrome_analyze').click(function() {
-        chrome.tabs.query({
-            'active': true,
-            'lastFocusedWindow': true
-        }, function(tabs) {
-            url = tabs[0].url;
-            sendHtml("chrome", url)
-
-        });
-
-
-    })
-
-});
+};

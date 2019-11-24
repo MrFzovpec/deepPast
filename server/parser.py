@@ -38,10 +38,12 @@ class Parser:
                 for element in word.text.split('\n'):
                     descr += element
                 descr += '\n'
+
             response_dict = {
                 'text': descr,
                 'title': title
             }
+            response_dict['text'] = response_dict['text'].replace('\n', 'dp-trans')
             return json.dumps(response_dict)
         else:
             response_dict = {

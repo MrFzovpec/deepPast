@@ -1,35 +1,45 @@
-.dpast__content__defined{
-    text-decoration: underline;
-    font-weight: bold;
-    color: #003EFF;
-    text-transform: capitalize;
+@import url('https://fonts.googleapis.com/css?family=Caveat&display=swap');
+
+.dpast{
+    margin-top: 50px;
+    background: #E8E8E8;
+    padding: 4%;
+    display: flex;
+    justify-content: center;
+    font-style: italic;
+    font-size: 20px;
+    font-family: 'Caveat', cursive;
 }
 
-.dpast__content__defined:hover{
-    background: #ffec82;
+
+.dpast__content__defined, .chrome_dpast__content__defined{
+    text-decoration: underline;
+    font-weight: bold;
+    color: #003EFF
+}
+.dpast__content__defined:hover, .chrome_dpast__content__defined:hover{
+    background: #003EFF;
+    color: white;
+    text-decoration: none;
+
+    text-align: center;
     cursor: pointer
 }
 
 .chrome_dpast__content__defined{
-    text-decoration: underline;
-    font-weight: bold;
-    color: #003EFF;
     text-transform: capitalize;
-}
-
-.chrome_dpast__content__defined:hover{
-    background: #ffec82;
-    cursor: pointer
 }
 
 #dpast__description{
     padding: 3%;
     border: 3px solid black;
-    width: 50%;
+    width: 35%;
     display: none;
     position: absolute;
     z-index: 9999999;
     background: white;
+    height: 60%;
+    overflow: scroll;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -59,23 +69,8 @@
 }
 
 #close__dpast__description{
+    top: 8px;
+    right: 5px;
+    position: fixed;
     cursor: pointer;
-}
-#chrome_analyze{
-    cursor: pointer;
-    color: #D00000;
-    text-decoration: underline;
-    text-transform: uppercase;
-    font-size: 18px
-}
-
-#chrome_words{
-    display: none
-}
-
-#chrome_analyze__process{
-    display: none;
-    color: #D01D00;
-    text-decoration: underline;
-    text-transform: uppercase;
 }

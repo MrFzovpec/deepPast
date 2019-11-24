@@ -1,38 +1,53 @@
+
+@import url('https://fonts.googleapis.com/css?family=Caveat&display=swap');
+
+.dpast{
+    margin-top: 50px;
+    background: #E8E8E8;
+    padding: 4%;
+    display: flex;
+    justify-content: center;
+    font-style: italic;
+    font-size: 20px;
+    font-family: 'Caveat', cursive;
+}
+
+
 .dpast__content__defined{
     text-decoration: underline;
     font-weight: bold;
-    color: #003EFF;
-    text-transform: capitalize;
+    color: #003EFF
 }
 
-.dpast__content__defined:hover{
-    background: #ffec82;
+.dpast__content__defined:hover, .chrome_dpast__content__defined:hover{
+    background: #003EFF;
+    color: white;
+    text-decoration: none;
+
+    text-align: center;
     cursor: pointer
 }
 
 .chrome_dpast__content__defined{
-    text-decoration: underline;
-    font-weight: bold;
-    color: #003EFF;
     text-transform: capitalize;
 }
 
-.chrome_dpast__content__defined:hover{
-    background: #ffec82;
-    cursor: pointer
-}
-
 #dpast__description{
+    font-family: 'Source Sans Pro', sans-serif;
     padding: 3%;
-    border: 3px solid black;
-    width: 50%;
+    border-radius: 10px;
+    background: #ECECEC;
+    width: 350px;
     display: none;
     position: absolute;
     z-index: 9999999;
-    background: white;
+    box-shadow: 0 0 12px rgba(0,0,0,0.5);
+    height: 60%;
+    overflow: scroll;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding-bottom: 10px;
 }
 #dpast__description h2{
     color: #0037FF
@@ -41,7 +56,7 @@
 #dpast__description__title{
 
     color: white;
-    background: #0041FF;
+    background: #003EFF;
     font-size: 19px;
     padding: 7px;
     cursor: pointer;
@@ -49,8 +64,8 @@
 }
 
 #dpast__description__title:hover{
-    color: #0041FF;
-    background: white;
+    color: #003EFF;
+    background: none;
     text-decoration: underline;
 }
 
@@ -59,23 +74,8 @@
 }
 
 #close__dpast__description{
+    top: 10px;
+    right: 10px;
+    position: fixed;
     cursor: pointer;
-}
-#chrome_analyze{
-    cursor: pointer;
-    color: #D00000;
-    text-decoration: underline;
-    text-transform: uppercase;
-    font-size: 18px
-}
-
-#chrome_words{
-    display: none
-}
-
-#chrome_analyze__process{
-    display: none;
-    color: #D01D00;
-    text-decoration: underline;
-    text-transform: uppercase;
 }

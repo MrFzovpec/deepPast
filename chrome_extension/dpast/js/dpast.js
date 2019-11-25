@@ -1,6 +1,6 @@
 function find(content) {
 
-    $.get("http://127.0.0.1:5000/find?word=" + content,
+    $.get("http://raspberrypiq.hopto.org:5000/find?word=" + content,
 
         function(data) {
             var text = JSON.parse(data)['text']
@@ -28,7 +28,7 @@ function sendHtml(mode, url) {
     my_url = window.location.href
 
     if (mode != "chrome") {
-        xmlHttp.open("GET", "http://127.0.0.1:5000/parse?url=" + my_url, false)
+        xmlHttp.open("GET", "http://raspberrypiq.hopto.org:5000/parse?url=" + my_url, false)
 
         xmlHttp.send();
 
@@ -43,7 +43,7 @@ function sendHtml(mode, url) {
         $('#chrome_analyze').toggle()
 
 
-        xmlHttp.open("GET", "http://127.0.0.1:5000/parse_chrome?url=" + url, false)
+        xmlHttp.open("GET", "http://raspberrypiq.hopto.org:5000/parse_chrome?url=" + url, false)
         xmlHttp.send();
         $('#chrome_analyze__process').toggle()
 
@@ -54,6 +54,7 @@ function sendHtml(mode, url) {
 
 
         }
+        $('#chrome_words').append('')
 
         $('#chrome_words').show()
         $('#chrome_dpast__description__content').show()

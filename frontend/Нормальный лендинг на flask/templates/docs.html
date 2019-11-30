@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="jQuery-Mask-Plugin - A jQuery plugin to make field masks" />
+  <meta name="author" content="Igor Escobar" />
+  <title>DeepPast - Документация</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Chivo:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" type="text/css" media="screen">
+  <link rel="stylesheet" href="https://yandex.st/highlightjs/7.3/styles/default.min.css">
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+
+<body>
+  <div class="donate">
+    <div class="container">
+      <div class="navigation">
+        <nav>
+          <a href="/">Главная</a>
+          <a href="/documentation" class="selected">Документация</a>
+          <a href="https://github.com/MrFzovpec/deepPast" target="black">Github</a>
+        </nav>
+      </div>
+
+      <i class="hidden">Close</i>
+    </div>
+  </div>
+
+  <section class="docs">
+    <div class="container container-narrow">
+      <div class="nav-container">
+        <nav class="code-nav docs-nav col-md-3 col-xs-12">
+          <ol>
+            <li>
+              <p class="section-divider">SDK</p>
+            </li>
+            <li><a href="#basic-usage">Старт</a></li>
+            <li><a href="#callback-examples">Оформление текста для обработки</a></li>
+            <li><a href="#on-the-fly-mask-changes">Окно для вывода информации о слове/речевом обороте/словосочетании</a></li>
+            <li><a href="#mask-as-a-function">Вызываем функцию парсинга контента</a></li>
+            <li>
+              <p class="section-divider">Расширение</p>
+            </li>
+            <li><a href="#field-options">Установка расширения</a></li>
+
+          </ol>
+        </nav>
+      </div>
+
+      <div class="docs-content">
+
+        <div class="doc-point">
+          <h2>SDK</h2>
+          <h3 id="basic-usage">Старт</h3>
+          <p class="doc-description">Перед началом работы нужно импортировать скрипты и стили:</p><br>
+
+          <xmp>
+
+            <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <meta http-equiv="X-UA-Compatible" content="ie=edge">
+              <!-- Импортируем jQuery -->
+              <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+              <!-- Импортируем стили deepPast -->
+              <link rel="stylesheet" href="...path-to-dpast-folder/dpast/css/dpast.css">
+              <!-- Импортируем скрипты deepPast -->
+              <script type="text/javascript" src="...path-to-dpast-folder/dpast/js/dpast.js"></script>
+              <!-- Импорт Ваших стилей -->
+              <link rel="stylesheet" href="css/main.css">
+
+              <title>Document</title>
+            </head>
+          </xmp>
+        </div>
+
+        <div class="doc-point">
+          <h3 id="callback-examples">Оформление текста для обработки</h3>
+          <p class="doc-description">Для выделения зоны с текстом используется родительский класс <mark class="type_class">dpast</mark>, для выделения параграфа с текстом нужно использовать класс <mark class="type_class">dpast__content</mark></p>
+          <xmp>
+            <div class="dpast">
+              <p class="dpast__content">
+                Унылая пора! Очей очарованье! <br>
+                Приятна мне твоя прощальная краса — <br>
+                Люблю я пышное природы увяданье,<br>
+                В голубь и в золото одетые леса,<br>
+                В их сенях ветра шум и свежее дыханье,<br>
+                И мглой волнистою покрыты небеса,<br>
+                И редкий солнца луч, и первые морозы,<br>
+                И герой седой зимы угрозы.<br><br>
+                А.С. Пушкин
+              </p>
+
+            </div>
+          </xmp>
+
+
+        </div>
+
+        <div class="doc-point">
+          <h3 id="on-the-fly-mask-changes">Окно для вывода информации о слове/речевом обороте/словосочетании</h3>
+          <p class="doc-description">Для добавлении окна, создайте блок с id <mark class="type_id">dpast__description</mark>. В этот блок добавьте следущие элементы<br>
+            1) Изображение или блок с id <mark class="type_id">close__dpast__description</mark><br>
+            2) <mark class="type_tag">span</mark> с id <mark class="type_id">dpast__description__title</mark><br>
+            3) Пустой параграф <mark class="type_tag">p</mark> с id <mark class="type_id">dpast__description__content</mark></p>
+          <xmp>
+            <div id="dpast__description">
+              <img id="close__dpast__description" src="https://img.icons8.com/ios/40/000000/close-window.png">
+              <span id="dpast__description__title"></span>
+              <br><br>
+              <p id="dpast__description__content"></p>
+            </div>
+          </xmp>
+        </div>
+
+        <div class="doc-point">
+          <h3 id="mask-as-a-function">Вызываем функцию парсинга контента</h3>
+
+          <p class="doc-description">В конце добавляем <mark class="type_tag">script</mark> для вызова функции парсинга текста/ов</p><br>
+          <p class="doc-description"><mark class="type_tag">UPD:</mark> в последних версиях выполнение этого этапа НЕОБЯЗАТЕЛЬНО.</p><br>
+
+          <xmp>
+            <script type="text/javascript" onload="">
+              sendHtml()
+            </script>
+          </xmp>
+        </div>
+        <a href="{{ url_for('static', filename = 'files/dpast.zip') }}" download class="button-large">Скачать SDK-файлы</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="docs">
+    <div class="container container-narrow">
+      <nav class="code-nav docs-nav ">
+      </nav>
+
+      <div class="docs-content">
+        <h2>Расширение</h2>
+
+        <div class="doc-point">
+          <h3 id="field-options">Как установить расширение</h3>
+          <p class="doc-description">В первую очередь, нужно <a href="{{ url_for('static', filename = 'files/chrome_extension.zip') }}" download>скачать</a> и распаковать архив с расширением. После нужно открыть браузер Google Chrome и перейти на <a target="black"
+              href="chrome://extensions/"><mark class="type_id">chrome://extensions/</mark></a>, включить <mark class="type_tag">режим разработчика</mark> и загрузить папку с расширением с помощью кнопки <mark class="type_class">"Загрузить
+              распакованное расширение"</mark>. (См. видео ниже)</p><br>
+          <video width="100%" src="{{ url_for('static', filename = 'video/install.mov') }}" autoplay controls poster="{{ url_for('static', filename = 'img/logo3.jpg') }}"></video>
+        </div>
+        <a href="{{ url_for('static', filename = 'files/chrome_extension.zip') }}" download class="button-large">Скачать расширение</a>
+      </div>
+
+    </div>
+  </section>
+
+  <center>
+    <div class="container">
+      <iframe
+        src="https://money.yandex.ru/quickpay/shop-widget?writer=seller&targets=%D0%9F%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%2C%20%D0%B5%D1%81%D0%BB%D0%B8%20%D0%BF%D0%BE%D0%BD%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%D1%81%D1%8C%20%D0%B8%D0%B4%D0%B5%D1%8F.%20%D0%9A%D1%83%D0%BF%D0%B8%D0%BC%20%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9%20%D1%81%D0%B5%D1%80%D0%B2%D0%B0%D0%BA%20%D0%B8%20%D0%BF%D0%B8%D1%86%D1%86%D1%83)&targets-hint=&default-sum=50&button-text=13&payment-type-choice=on&comment=on&hint=%D0%A7%D1%82%D0%BE%20%D1%82%D1%8B%20%D1%85%D0%BE%D1%82%D0%B5%D0%BB%20%D0%B1%D1%8B%20%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%3F&successURL=&quickpay=shop&account=410017742960837"
+        width="423" height="341" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+    </div>
+  </center>
+
+  <footer>
+    <div class="container">
+      <img src="{{ url_for('static', filename = 'img/logo3.jpg') }}" alt="">
+      <h3>Созданно командой GeekOn Team</h3>
+
+      <ol>
+        <li><a href="https://vk.com/gppetr" target="_blank">Петя</a></li>
+        <li><a href="https://vk.com/id227815939" target="_blank">Артур</a></li>
+        <li><a href="https://vk.com/glowd" target="_blank">Данила</a></li>
+        <li><a href="https://vk.com/tikhonnnnnn" target="_blank">Тихон</a></li>
+        <li><a href="https://vk.com/sdostoevsky2015" target="_blank">Сережа</a></li>
+        <li><a href="https://github.com/MrFzovpec/deepPast" target="_blank">Github</a></li>
+
+      </ol>
+    </div>
+  </footer>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="{{ url_for('static', filename = 'js/main.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/donation.js') }}"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+</script>
+
+</html>

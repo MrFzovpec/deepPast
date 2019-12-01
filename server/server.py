@@ -29,8 +29,9 @@ def parse_site_chrome():
 
     return parser.parse_current_page_chrome(url)
 
-
-
+@app.route('/')
+def status():
+    return 'all ok!'
 
 if __name__ == "__main__":
     app.run()
